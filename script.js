@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling para los enlaces de navegación
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -9,19 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - (document.querySelector('header').offsetHeight), // Ajusta por la altura del header
+                    top: targetElement.offsetTop - (document.querySelector('header').offsetHeight), 
                     behavior: 'smooth'
                 });
             }
         });
     });
 
-    // Efecto de aparición para las secciones (opcional, para un toque extra)
+  
     const sections = document.querySelectorAll('section');
     const observerOptions = {
-        root: null, // viewport
+        root: null, 
         rootMargin: '0px',
-        threshold: 0.2 // Cuando el 20% de la sección es visible
+        threshold: 0.2 
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target); // Dejar de observar una vez que aparece
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -41,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Validación básica del formulario de contacto (ejemplo, no procesa el envío)
+
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita el envío real del formulario
+            e.preventDefault(); 
 
             const name = this.querySelector('input[type="text"]').value;
             const email = this.querySelector('input[type="email"]').value;
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (name && email && message) {
                 alert('¡Mensaje enviado con éxito! (En un entorno real, esto se enviaría a un servidor)');
-                this.reset(); // Limpia el formulario
+                this.reset(); 
             } else {
                 alert('Por favor, completa todos los campos.');
             }
